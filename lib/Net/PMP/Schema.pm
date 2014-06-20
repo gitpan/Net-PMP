@@ -3,7 +3,7 @@ use Moose;
 use Carp;
 use Data::Dump qw( dump );
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 has 'definitions' => ( is => 'ro', isa => 'HashRef', required => 1, );
 has 'description' => ( is => 'ro', isa => 'Str',     required => 1, );
@@ -43,7 +43,7 @@ __END__
 
 =head1 AUTHOR
 
-Peter Karman, C<< <pkarman at cpan.org> >>
+Peter Karman, C<< <karman at cpan.org> >>
 
 =head1 BUGS
 

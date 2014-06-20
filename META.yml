@@ -1,7 +1,7 @@
 ---
 abstract: 'Perl SDK for the Public Media Platform'
 author:
-  - 'Peter Karman, C<< <pkarman at cpan.org> >>'
+  - 'Peter Karman, C<< <karman at cpan.org> >>'
 build_requires:
   ExtUtils::MakeMaker: 6.59
 configure_requires:
@@ -38,4 +38,4 @@ resources:
   homepage: https://github.com/APMG/pmp-sdk-perl
   license: http://opensource.org/licenses/mit-license.php
   repository: http://github.com/APMG/pmp-sdk-perl
-version: 0.001
+version: 0.002

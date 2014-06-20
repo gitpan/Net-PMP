@@ -14,7 +14,7 @@ use overload
 
 __PACKAGE__->meta->make_immutable();
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 sub expires_in { shift->token_expires_in(@_) }
 
@@ -74,7 +74,7 @@ Returns the B<access_token>. Objects are overloaded to stringify with as_string(
 
 =head1 AUTHOR
 
-Peter Karman, C<< <pkarman at cpan.org> >>
+Peter Karman, C<< <karman at cpan.org> >>
 
 =head1 BUGS
 

@@ -4,7 +4,7 @@ use warnings;
 use Net::PMP::Client;
 use Net::PMP::CollectionDoc;
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 sub client {
     my $class = shift;
@@ -64,7 +64,7 @@ examples.
 
 =head1 AUTHOR
 
-Peter Karman, C<< <pkarman at cpan.org> >>
+Peter Karman, C<< <karman at cpan.org> >>
 
 =head1 BUGS
 

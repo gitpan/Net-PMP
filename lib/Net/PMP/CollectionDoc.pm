@@ -7,8 +7,9 @@ use Net::PMP::CollectionDoc::Links;
 use Net::PMP::CollectionDoc::Items;
 use UUID::Tiny ':std';
 use JSON;
+use Try::Tiny;
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 # the 'required' flag on these attributes should match
 # the core CollectionDoc schema:
@@ -233,7 +234,7 @@ Returns canonical URI for Doc per 'self' link.
 
 sub get_self_uri {
     my $self = shift;
-    if ( exists $self->links->{self} ) {
+    if ( $self->links and exists $self->links->{self} ) {
         return $self->links->{self}->[0]->{href};
     }
     return '';
@@ -353,9 +354,9 @@ sub as_hash {
         $hash{href} ||= $self->get_uri;
     }
 
-    # TODO add any read-only links that come from the server
+    # blacklist read-only links that come from the server
     # in order to make round-trips safe
-    my %ro_links = map { $_ => 1 } qw( );
+    my %ro_links = map { $_ => 1 } qw( query edit auth navigation creator );
     for my $link ( keys %{ $self->links } ) {
         next if exists $hash{links}->{$link};
         next if exists $ro_links{$link};
@@ -397,7 +398,14 @@ Returns the CollectionDoc as a JSON-encoded string suitable for saving.
 
 sub as_json {
     my $self = shift;
-    return encode_json( $self->as_hash );
+    my $json = try {
+        encode_json( $self->as_hash );
+    }
+    catch {
+        confess $_;    # re-throw with full stack trace.
+        return '';     # we can't get here can we?
+    };
+    return $json;
 }
 
 =head2 add_item( I<child> )
@@ -423,7 +431,7 @@ __END__
 
 =head1 AUTHOR
 
-Peter Karman, C<< <pkarman at cpan.org> >>
+Peter Karman, C<< <karman at cpan.org> >>
 
 =head1 BUGS
 
