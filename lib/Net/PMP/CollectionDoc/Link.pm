@@ -5,7 +5,7 @@ use Data::Dump qw( dump );
 use URI::Template;
 use Net::PMP::TypeConstraints;
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 has 'hints'      => ( is => 'rw', isa => 'HashRef' );
 has 'template'   => ( is => 'rw', isa => 'Str' );
@@ -134,7 +134,7 @@ Returns object as Perl hashref.
 
 =head1 AUTHOR
 
-Peter Karman, C<< <pkarman at cpan.org> >>
+Peter Karman, C<< <karman at cpan.org> >>
 
 =head1 BUGS
 

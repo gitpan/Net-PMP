@@ -4,7 +4,7 @@ use Carp;
 use Data::Dump qw( dump );
 extends 'Net::PMP::CollectionDoc';
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 # do NOT make immutable. somehow this breaks subclassing of CollectionDoc
 #__PACKAGE__->meta->make_immutable();
@@ -28,7 +28,7 @@ any new methods or functionality. It may disappear in a future release.
 
 =head1 AUTHOR
 
-Peter Karman, C<< <pkarman at cpan.org> >>
+Peter Karman, C<< <karman at cpan.org> >>
 
 =head1 BUGS
 

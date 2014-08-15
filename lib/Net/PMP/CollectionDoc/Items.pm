@@ -4,7 +4,7 @@ use Carp;
 use Data::Dump qw( dump );
 use Net::PMP::CollectionDoc::Item;
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 has 'items' => ( is => 'rw', isa => 'ArrayRef', required => 1 );
 has 'total' => ( is => 'ro', isa => 'Int',      required => 1 );
@@ -94,7 +94,7 @@ Re-initialize the iterator.
 
 =head1 AUTHOR
 
-Peter Karman, C<< <pkarman at cpan.org> >>
+Peter Karman, C<< <karman at cpan.org> >>
 
 =head1 BUGS
 

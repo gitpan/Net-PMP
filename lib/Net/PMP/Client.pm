@@ -14,7 +14,7 @@ use Net::PMP::Credentials;
 use URI;
 use Try::Tiny;
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 has '+configfile' => ( default => $ENV{HOME} . '/.pmp.yaml' );
 has 'host' => (
@@ -272,13 +272,12 @@ Returns the URI for the Credentials API.
 =cut
 
 sub get_credentials_uri {
-    my $self = shift;
-    if ( $self->host =~ m/api-sandbox/ ) {
-        return URI->new('https://publish-sandbox.pmp.io/auth/credentials');
-    }
-    else {
-        return URI->new('https://publish.pmp.io/auth/credentials');
-    }
+    my $self       = shift;
+    my $auth_links = $self->get_home_doc()->get_links('auth');
+    my $uri
+        = $auth_links->rels('urn:collectiondoc:form:createcredentials')->[0]
+        ->href;
+    return URI->new($uri);
 }
 
 =head2 create_credentials( I<params>  )
@@ -550,6 +549,7 @@ sub put {
     my $body    = $doc->as_json();
     if ( $self->debug ) {
         warn "PUT $uri\n" . dump( $doc->as_hash() ) . "\n";
+        warn "JSON: $body\n";
     }
     $request->header( 'Accept'       => 'application/json' );
     $request->header( 'Content-Type' => $self->pmp_content_type );

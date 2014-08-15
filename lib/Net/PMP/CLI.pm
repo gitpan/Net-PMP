@@ -7,7 +7,7 @@ use Net::PMP::Client;
 use JSON;
 use Data::Dump qw( dump );
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 has '+configfile' => ( default => $ENV{HOME} . '/.pmp.yaml' );
 
@@ -364,7 +364,7 @@ sub put {
     my $self = shift;
     my $filename = shift || $self->file();
     if ( !$filename ) {
-        die "--path required for put\n";
+        die "--file required for put\n";
     }
     my $client   = $self->init_client;
     my $hostname = $client->host;

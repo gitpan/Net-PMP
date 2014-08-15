@@ -4,7 +4,7 @@ use Carp;
 use Data::Dump qw( dump );
 use Net::PMP::TypeConstraints;
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 has 'href' => ( is => 'rw', isa => 'Net::PMP::Type::Href', required => 1, );
 has 'operation' => (
@@ -67,7 +67,7 @@ reference to an integer, so that passing to encode_json() will create a proper J
 
 =head1 AUTHOR
 
-Peter Karman, C<< <pkarman at cpan.org> >>
+Peter Karman, C<< <karman at cpan.org> >>
 
 =head1 BUGS
 

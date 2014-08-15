@@ -5,7 +5,7 @@ use Data::Dump qw( dump );
 use Net::PMP::CollectionDoc::Link;
 use Net::PMP::CollectionDoc::Permission;
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 has 'links' => (
     is       => 'rw',
@@ -117,7 +117,7 @@ Returns arrayref of links that match I<urn>.
 
 =head1 AUTHOR
 
-Peter Karman, C<< <pkarman at cpan.org> >>
+Peter Karman, C<< <karman at cpan.org> >>
 
 =head1 BUGS
 
