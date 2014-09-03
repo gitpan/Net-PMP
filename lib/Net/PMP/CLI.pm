@@ -7,9 +7,10 @@ use Net::PMP::Client;
 use JSON;
 use Data::Dump qw( dump );
 
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
-has '+configfile' => ( default => $ENV{HOME} . '/.pmp.yaml' );
+has '+configfile' =>
+    ( default => $ENV{PMP_CLIENT_CONFIG} || ( $ENV{HOME} . '/.pmp.yaml' ) );
 
 # keep attributes sorted as usage prints in this order
 has 'child'   => ( is => 'rw', isa => 'Str', );
@@ -345,7 +346,8 @@ sub get {
             $self->path, $client->last_response->status_line );
     }
     else {
-        dump $doc;
+        #dump $doc;
+        print $doc->as_json;
     }
 }
 
